@@ -7,7 +7,7 @@ module.exports = {
     /**将你的 library 暴露为所有的模块定义下都可运行的方式 */
     config.output.libraryTarget = 'umd';
     /**按需加载相关，设置为 webpackJsonp_VueMicroApp 即可 */
-    config.output.jsonFunction = 'webpackJsonp_ReactMicroApp';
+    config.output.jsonpFunction = `webpackJsonp_ReactMicroApp`;
 
     config.resolve.alias = {
       ...config.resolve.alias,
