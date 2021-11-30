@@ -1,16 +1,47 @@
 <script lang="ts" setup>
-type MenuItem = {
+import { computed, ref, onMounted, defineProps, withDefaults } from 'vue';
+import { useRoute } from 'vue-router';
+
+interface MenuItem {
   key: string;
   title: string;
   icon?: string;
   path: string;
   children?: MenuItem[];
-};
+}
 
-const menus: MenuItem[] = [];
-const selectKey = '';
+const selectKey = ref('');
+const route = useRoute();
 
-function changeMenu(item: MenuItem) {}
+const props = withDefaults(defineProps<{ menus: MenuItem[] }>(), {
+  menus: () => [],
+});
+
+function _initMenus() {
+  const currentMenu = _findCurrentMenu(props.menus, route.path);
+  if (currentMenu) {
+    const { key } = currentMenu;
+    selectKey.value = key;
+  }
+}
+
+function _findCurrentMenu(menus: MenuItem[], currentPath: string): MenuItem | null {
+  for (const menu of menus) {
+    const { path } = menu;
+    if (path === currentPath) return menu;
+    const currentMenu = _findCurrentMenu(menu.children || [], currentPath);
+    if (currentMenu) return currentMenu;
+  }
+  return null;
+}
+
+onMounted(() => {
+  _initMenus();
+});
+
+function changeMenu(menu: MenuItem) {
+  selectKey.value = menu.key;
+}
 </script>
 
 <template>
@@ -25,6 +56,12 @@ function changeMenu(item: MenuItem) {}
     </a-menu>
   </section>
 </template>
+
+<style scoped>
+.cns-main-menu >>> .cns-menu-sub{
+  background: rgb(12, 28, 53);
+}
+</style>
 
 <style scoped lang="scss">
 .cns-main-menu {
@@ -52,8 +89,6 @@ function changeMenu(item: MenuItem) {}
   .cns-child-title:hover {
     color: #408fff;
   }
-  // /deep/ .cns-menu-sub {
-  //   background: rgb(12, 28, 53);
-  // }
+  
 }
 </style>

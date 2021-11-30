@@ -2,10 +2,50 @@
 import MainMenu from './components/Menu.vue';
 import { useRoute } from 'vue-router';
 
-
 const route = useRoute();
 
-const menus = [{ name: 'Home', title: '主页', path: '/' }];
+const menus = [
+  {
+    key: 'Home',
+    title: '主页',
+    path: '/',
+  },
+  {
+    key: 'VueMicroApp',
+    title: 'Vue 主页',
+    path: '/vue',
+  },
+  {
+    key: 'VueMicroAppList',
+    title: 'Vue 列表页',
+    path: '/vue/list',
+  },
+  {
+    key: 'ReactMicroApp',
+    title: 'React 主页',
+    path: '/react',
+  },
+  {
+    key: 'ReactMicroAppList',
+    title: 'React 列表页',
+    path: '/react/list',
+  },
+  {
+    key: 'AngularMicroApp',
+    title: 'Angular 主页',
+    path: '/angular',
+  },
+  {
+    key: 'AngularMicroAppList',
+    title: 'Angular 列表页',
+    path: '/angular/list',
+  },
+  {
+    key: 'StaticMicroApp',
+    title: 'Static 微应用',
+    path: '/static',
+  },
+];
 </script>
 
 <template>
@@ -26,7 +66,7 @@ const menus = [{ name: 'Home', title: '主页', path: '/' }];
 </template>
 
 <style lang="scss">
-*{
+* {
   padding: 0;
   margin: 0;
 }

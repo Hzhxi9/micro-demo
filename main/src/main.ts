@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 
-import Antd from 'ant-design-vue';
-import "ant-design-vue/dist/antd.css";
+import { Menu } from 'ant-design-vue';
 
 import App from "./App.vue";
 import router from "./router";
@@ -12,4 +11,10 @@ import micro from "./micro";
 
 const app = createApp(App)
 
-app.use(Antd).use(store).use(router).mount("#app");
+const AntdComp = [Menu]
+
+AntdComp.forEach(comp => {
+    app.use(comp)
+})
+
+app.use(store).use(router).mount("#app");
