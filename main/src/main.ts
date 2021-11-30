@@ -7,7 +7,7 @@ import router from "./router";
 import store from "./store";
 import micro from "./micro";
 
-// micro()
+micro()
 
 const app = createApp(App)
 
