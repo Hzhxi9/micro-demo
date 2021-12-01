@@ -11,7 +11,7 @@ import 'antd/dist/antd.css';
 function render(props?: any) {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <App {...props} />
     </React.StrictMode>,
     document.getElementById('root')
   );
