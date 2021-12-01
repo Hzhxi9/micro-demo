@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref, onMounted, defineProps, withDefaults } from 'vue';
+import { watch, ref, onMounted, defineProps, withDefaults } from 'vue';
 import { useRoute } from 'vue-router';
 
 interface MenuItem {
@@ -16,6 +16,14 @@ const route = useRoute();
 const props = withDefaults(defineProps<{ menus: MenuItem[] }>(), {
   menus: () => [],
 });
+
+watch(
+  () => route['path'],
+  () => {
+    console.log('===')
+    _initMenus();
+  }
+);
 
 function _initMenus() {
   const currentMenu = _findCurrentMenu(props.menus, route.path);
@@ -58,7 +66,7 @@ function changeMenu(menu: MenuItem) {
 </template>
 
 <style scoped>
-.cns-main-menu >>> .cns-menu-sub{
+.cns-main-menu >>> .cns-menu-sub {
   background: rgb(12, 28, 53);
 }
 </style>
@@ -89,6 +97,5 @@ function changeMenu(menu: MenuItem) {
   .cns-child-title:hover {
     color: #408fff;
   }
-  
 }
 </style>
