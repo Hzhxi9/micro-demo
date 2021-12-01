@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import 'antd/dist/antd.css';
+import "./public-path";
 
 /**
  * 渲染函数
