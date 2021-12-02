@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import 'antd/dist/antd.css';
-import "./public-path";
+import './public-path';
 
 /**
  * 渲染函数
@@ -44,6 +44,13 @@ export async function mount(props: any) {
  */
 export async function unmount() {
   console.log('ReactMicroApp unmount');
-  const root = document.getElementById('root')
+  const root = document.getElementById('root');
   root && ReactDOM.unmountComponentAtNode(root);
+}
+
+if (process.env.NODE_ENV === 'development') {
+  (window as any)['ReactMicroApp'] = {};
+  (window as any)['ReactMicroApp'].bootstrap = bootstrap;
+  (window as any)['ReactMicroApp'].mount = mount;
+  (window as any)['ReactMicroApp'].unmount = unmount;
 }

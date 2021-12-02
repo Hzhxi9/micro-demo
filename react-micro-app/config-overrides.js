@@ -27,7 +27,7 @@ module.exports = {
         'Access-Control-Allow-Origin': '*',
       };
       /**配置 history 模式 */
-      config.historyApiFallback = true;
+      // config.historyApiFallback = false;
 
       return config;
     };

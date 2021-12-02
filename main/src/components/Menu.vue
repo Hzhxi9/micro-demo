@@ -25,7 +25,6 @@ watch(
 );
 
 function _initMenus() {
-  const path = route.path.endsWith('/') ? route.path.slice(0, route.path.length - 1) : route.path;
   const currentMenu = _findCurrentMenu(props.menus, route.path);
   if (currentMenu) {
     const { key } = currentMenu;

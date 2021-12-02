@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
 import { base } from './router';
 
 type MenuItem = {
