@@ -16,16 +16,13 @@ AntdComp.forEach(component => Vue.use(component))
 
 let instance: any = null, router = null
 
-const base = (window as any).__POWERED_BY_QIANKUN__ ? "/vue" : '/'
-
 function render(props?: any) {
   router = new VueRouter({
-    base,
+    base: (window as any).__POWERED_BY_QIANKUN__ ? "/vue" : process.env.BASE_URL,
     mode: 'history',
     routes
   })
-
-  instance = new Vue({ router, render: (h) => h(App) }).$mount("#vue-app");
+  instance = new Vue({ router, render: (h) => h(App) }).$mount("#app");
 }
 
 /**独立运行时，直接挂载应用 */

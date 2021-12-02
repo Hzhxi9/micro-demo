@@ -5,49 +5,24 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const menus = [
-  {
-    key: 'Home',
-    title: '主页',
-    path: '/',
-  },
-  {
-    key: 'VueMicroApp',
-    title: 'Vue 主页',
-    path: '/vue',
-  },
-  {
-    key: 'VueMicroAppList',
-    title: 'Vue 列表页',
-    path: '/vue/list',
-  },
-  {
-    key: 'ReactMicroApp',
-    title: 'React 主页',
-    path: '/react',
-  },
-  {
-    key: 'ReactMicroAppList',
-    title: 'React 列表页',
-    path: '/react/list',
-  },
+  { key: 'Home', title: '主页', path: '/' },
+  { key: 'VueMicroApp', title: 'Vue 主页', path: '/vue' },
+  { key: 'VueMicroAppList', title: 'Vue 列表页', path: '/vue/list' },
+  { key: 'ReactMicroApp', title: 'React 主页', path: '/react' },
+  { key: 'ReactMicroAppList', title: 'React 列表页', path: '/react/list' },
 ];
 </script>
 
 <template>
-  <a-config-provider prefixCls="cns">
-    <section id="cns-main-app">
-      <section class="cns-menu-wrapper">
-        <main-menu :menus="menus" />
-      </section>
-      <section class="cns-frame-wrapper">
-        <!-- 主应用渲染区，用于挂载主应用路由触发的组件 -->
-        <router-view v-show="route.name" />
-
-        <!-- 子应用渲染区，用于挂载子应用节点 -->
-        <section v-show="!route.name" id="frame"></section>
-      </section>
+  <section id="cns-main-app">
+    <section class="cns-menu-wrapper"><main-menu :menus="menus" /></section>
+    <section class="cns-frame-wrapper">
+      <!-- 主应用渲染区，用于挂载主应用路由触发的组件 -->
+      <router-view v-show="route.name" />
+      <!-- 子应用渲染区，用于挂载子应用节点 -->
+      <section v-show="!route.name" id="frame"></section>
     </section>
-  </a-config-provider>
+  </section>
 </template>
 
 <style lang="scss">
