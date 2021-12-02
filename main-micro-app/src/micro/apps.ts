@@ -1,3 +1,7 @@
+import config from "@/config"
+
+const { REACT_MICRO_APP, VUE_MICRO_APP } = config
+
 const apps = [
     /**
      * name: 微应用名称 - 具有唯一性
@@ -7,13 +11,13 @@ const apps = [
      */
     {
         name: 'ReactMicroApp',
-        entry: '//localhost:10100',
+        entry: REACT_MICRO_APP,
         container: '#frame',
         activeRule: '/#/react'
     },
     {
         name: "VueMicroApp",
-        entry: "//localhost:10200",
+        entry: VUE_MICRO_APP,
         container: "#frame",
         activeRule: "/#/vue"
     },
