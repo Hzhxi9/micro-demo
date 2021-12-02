@@ -9,13 +9,13 @@ const apps = [
         name: 'ReactMicroApp',
         entry: '//localhost:10100',
         container: '#frame',
-        activeRule: '/react'
+        activeRule: '/#/react'
     },
     {
         name: "VueMicroApp",
         entry: "//localhost:10200",
         container: "#frame",
-        activeRule: "/vue"
+        activeRule: "/#/vue"
     },
 ]
 

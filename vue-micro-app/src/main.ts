@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import { Menu } from 'ant-design-vue';
 
 import App from "./App.vue";
-import routes from "./router";
+import routes, { base } from "./router";
 
 import "./public-path";
 
@@ -14,19 +14,32 @@ Vue.use(VueRouter)
 const AntdComp = [Menu]
 AntdComp.forEach(component => Vue.use(component))
 
-let instance: any = null, router = null
+let instance: any = null, router: VueRouter | null = null
 
 function render(props?: any) {
   router = new VueRouter({
-    base: (window as any).__POWERED_BY_QIANKUN__ ? "/vue" : process.env.BASE_URL,
-    mode: 'history',
+    // base: (window as any).__POWERED_BY_QIANKUN__ ? "/vue" : process.env.BASE_URL,
+    mode: 'hash',
     routes
   })
-  instance = new Vue({ router, render: (h) => h(App) }).$mount("#app");
+
+  if ((window as any).__POWERED_BY_QIANKUN__) {
+    router.beforeEach((to, from, next) => {
+      if (!to.path.includes('/vue')) {
+        const path = base + (to.path === '/' ? '' : to.path)
+        next({ path })
+      }
+      else next()
+    })
+  }
+
+
+  instance = router && new Vue({ router, render: (h) => h(App) }).$mount("#app");
 }
 
 /**独立运行时，直接挂载应用 */
 if (!(window as any).__POWERED_BY_QIANKUN__) render()
+
 
 /**
  * bootstrap 只会在微应用初始化的时候调用一次，

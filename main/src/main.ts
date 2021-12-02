@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { Menu } from 'ant-design-vue';
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 import App from "./App.vue";
 import routes from "./router";
@@ -16,7 +16,7 @@ const app = createApp(App)
  * 即将开始监听 location 变化，触发路由规则
  */
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHashHistory(process.env.BASE_URL),
     routes,
   });
 

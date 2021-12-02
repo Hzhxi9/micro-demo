@@ -1,6 +1,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+import { base } from './router';
+
 type MenuItem = {
   key: string;
   route: string;
@@ -12,8 +14,8 @@ type MenuItem = {
 })
 export default class App extends Vue {
   menus = [
-    { key: 'vue', route: '/', title: '主页' },
-    { key: 'vue-list', route: '/list', title: '列表页' },
+    { key: 'vue', route: base === '/' ? '' : base, title: '主页' },
+    { key: 'vue-list', route: base + '/list', title: '列表页' },
   ] as MenuItem[];
 
   get currentRoute(): string {
@@ -30,7 +32,7 @@ export default class App extends Vue {
         <router-link :to="item.route">{{ item.title }}</router-link>
       </a-menu-item>
     </a-menu>
-    <router-view :key="(new Date()).getTime()" />
+    <router-view :key="new Date().getTime()" />
   </div>
 </template>
 
