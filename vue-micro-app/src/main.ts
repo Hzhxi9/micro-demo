@@ -1,22 +1,27 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import { Menu } from 'ant-design-vue';
+import { Menu, Card } from 'ant-design-vue';
 
 import App from "./App.vue";
 import routes, { base } from "./router";
+import actions from "@/shared/actions";
 
 import "./public-path";
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter)
 
-const AntdComp = [Menu]
+const AntdComp = [Menu, Card]
 AntdComp.forEach(component => Vue.use(component))
 
 let instance: any = null, router: VueRouter | null = null
 
 function render(props?: any) {
+  if (props) {
+    /**注入 actions 实例 */
+    actions.setAction(props)
+  }
   router = new VueRouter({
     // base: (window as any).__POWERED_BY_QIANKUN__ ? "/vue" : process.env.BASE_URL,
     mode: 'hash',
