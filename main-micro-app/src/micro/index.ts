@@ -1,4 +1,4 @@
-import { registerMicroApps, addGlobalUncaughtErrorHandler, start } from 'qiankun';
+import { registerMicroApps, addGlobalUncaughtErrorHandler, runAfterFirstMounted, start } from 'qiankun';
 
 /**子应用注册信息 */
 import apps from './apps';
@@ -54,6 +54,11 @@ addGlobalUncaughtErrorHandler((event: Event | string) => {
     if (msg && msg.includes("died in status LOADING_SOURCE_CODE")) {
         message.error("子应用加载失败，请检查应用是否可运行");
     }
+})
+
+/**第一个微应用 mount 后需要调用的方法 */
+runAfterFirstMounted(() => {
+    console.log("[MainApp] first app mounted");
 })
 
 /**导出 qiankun 的启动函数 */

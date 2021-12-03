@@ -1,16 +1,31 @@
 <template>
   <section class="login-container">
-     <a-button size="large" type="primary" @click="login">Login</a-button>
+    <a-button size="large" type="primary" @click="login">Login</a-button>
   </section>
 </template>
 
 <script lang="ts" setup>
-  function login() {
-    console.log('login');
-  };
+import { useRouter } from 'vue-router';
+import { ApiLoginQuickly } from '@/apis';
+
+import shared from '@/shared';
+
+const router = useRouter();
+
+async function login() {
+  const result = await ApiLoginQuickly();
+  const token = result.data;
+
+  console.log(token)
+
+  shared.setToken(token);
+
+  router.push('/');
+}
 </script>
 
 <style lang="scss" scoped>
-@import "~@/assets/styles/flex.less";
-.login-container { padding: 30px; }
+.login-container {
+  padding: 30px;
+}
 </style>

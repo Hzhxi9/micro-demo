@@ -1,11 +1,13 @@
 import { createApp } from "vue";
-import { Menu } from 'ant-design-vue';
+import { Menu, Button } from 'ant-design-vue';
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import App from "./App.vue";
 import routes from "./router";
 import store from "./store";
 import micro from "./micro";
+
+import '@/assets/styles/common.scss'
 
 micro()
 
@@ -20,7 +22,7 @@ const router = createRouter({
     routes,
   });
 
-const AntdComp = [Menu]
+const AntdComp = [Menu, Button]
 AntdComp.forEach(comp => {
     app.use(comp)
 })

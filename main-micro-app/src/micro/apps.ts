@@ -1,4 +1,5 @@
 import config from "@/config"
+import shared from "@/shared"
 
 const { REACT_MICRO_APP, VUE_MICRO_APP } = config
 
@@ -13,13 +14,17 @@ const apps = [
         name: 'ReactMicroApp',
         entry: REACT_MICRO_APP,
         container: '#frame',
-        activeRule: '/#/react'
+        activeRule: '/#/react',
+        /**通过 props 将 shared 传递给 微应用 */
+        props: { shared }
     },
     {
         name: "VueMicroApp",
         entry: VUE_MICRO_APP,
         container: "#frame",
-        activeRule: "/#/vue"
+        activeRule: "/#/vue",
+        /**通过 props 将 shared 传递给 微应用 */
+        props: { shared }
     },
 ]
 

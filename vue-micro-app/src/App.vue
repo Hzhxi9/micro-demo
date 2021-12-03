@@ -15,6 +15,7 @@ export default class App extends Vue {
   menus = [
     { key: 'vue', route: base === '/' ? '' : base, title: '主页' },
     { key: 'vue-list', route: base + '/list', title: '列表页' },
+    { key: 'vue-communication', route: base + '/communication', title: '通讯页' },
   ] as MenuItem[];
 
   get currentRoute(): string {

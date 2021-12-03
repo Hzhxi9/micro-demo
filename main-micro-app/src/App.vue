@@ -10,6 +10,9 @@ const menus = [
   { key: 'VueMicroAppList', title: 'Vue 列表页', path: '/vue/list' },
   { key: 'ReactMicroApp', title: 'React 主页', path: '/react' },
   { key: 'ReactMicroAppList', title: 'React 列表页', path: '/react/list' },
+  { key: 'MainCommunication', title: '主应用通讯页', path: '/communication' },
+  { key: 'VueCommunication', title: 'Vue 通讯页', path: '/vue/communication' },
+  { key: 'ReactCommunication', title: 'React 通讯页', path: '/react/communication' },
 ];
 </script>
 
