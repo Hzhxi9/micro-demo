@@ -40,7 +40,7 @@ export default class Communication extends Vue {
         /**未登录 - 返回主页 */
         message.error('未登录');
         return setTimeout(() => {
-          location.href = '/'
+          history.pushState(null, 'login', '#/login')
         }, 1000)
       }
       this.getUserInfo(token)

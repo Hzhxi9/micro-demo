@@ -9,7 +9,13 @@ import micro from "./micro";
 
 import '@/assets/styles/common.scss'
 
-micro()
+micro({
+  /**
+   * experimentalStyleIsolation 配置是做容器应用和微应用的样式隔离，
+   * 在微应用的所有样式前加前缀区分
+   */
+  sandbox: { experimentalStyleIsolation: true }
+})
 
 const app = createApp(App)
 
@@ -18,13 +24,13 @@ const app = createApp(App)
  * 即将开始监听 location 变化，触发路由规则
  */
 const router = createRouter({
-    history: createWebHashHistory(process.env.BASE_URL),
-    routes,
-  });
+  history: createWebHashHistory(process.env.BASE_URL),
+  routes,
+});
 
 const AntdComp = [Menu, Button]
 AntdComp.forEach(comp => {
-    app.use(comp)
+  app.use(comp)
 })
 
 app.use(store).use(router).mount("#main");

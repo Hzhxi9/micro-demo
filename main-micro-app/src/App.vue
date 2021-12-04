@@ -13,6 +13,7 @@ const menus = [
   { key: 'MainCommunication', title: '主应用通讯页', path: '/communication' },
   { key: 'VueCommunication', title: 'Vue 通讯页', path: '/vue/communication' },
   { key: 'ReactCommunication', title: 'React 通讯页', path: '/react/communication' },
+  { key: 'UmiMicroApp', title: 'Umi 主页', path: '/react-sub' },
 ];
 </script>
 

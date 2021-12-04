@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import { Menu, Card } from 'ant-design-vue';
+import { Menu, Card, Button } from 'ant-design-vue';
 
 import App from "./App.vue";
 import routes, { base } from "./router";
@@ -12,7 +12,7 @@ import "./public-path";
 Vue.config.productionTip = false;
 Vue.use(VueRouter)
 
-const AntdComp = [Menu, Card]
+const AntdComp = [Menu, Card, Button]
 AntdComp.forEach(component => Vue.use(component))
 
 let instance: any = null, router: VueRouter | null = null
