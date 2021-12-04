@@ -10,6 +10,7 @@ function getSubRootContainer(container: HTMLElement) {
 }
 
 function storeTest(props?: any) {
+  console.log(props)
   props.onGlobalStateChange((value: any, prev: any) => console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev), true);
   props.setGlobalState({
     ignore: props.name,

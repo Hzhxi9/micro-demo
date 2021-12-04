@@ -1,5 +1,6 @@
 import config from "@/config"
 import shared from "@/shared"
+import actions from '@/shared/action'
 
 const { REACT_MICRO_APP, VUE_MICRO_APP, REACT_SUB_MICRO_APP } = config
 
@@ -32,7 +33,7 @@ const apps = [
         container: "#frame",
         activeRule: "/#/react-sub",
         /**通过 props 将 shared 传递给 微应用 */
-        props: { shared }
+        props: { shared  }
     },
 ]
 

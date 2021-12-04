@@ -44,6 +44,7 @@ function App(props: any) {
   const state = props?.state?.getGlobalState();
 
   useEffect(() => {
+    console.log(state,'==state')
     /**注册一个观察者函数 */
     props?.store?.onGlobalStateChange?.((state: any, prevState: any) => {
       /**state: 变更后的状态; prevState: 变更前的状态 */
